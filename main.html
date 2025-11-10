@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCareHub – Model conceptual</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-white text-zinc-900">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 backdrop-blur bg-white/90 border-b">
+    <div class="mx-auto max-w-6xl px-4 flex items-center justify-between h-14">
+      <!-- 🔗 titlul face acum trimitere spre pagina principală -->
+      <a href="medhub.html" class="font-semibold hover:underline">MediCareHub</a>
+      <ul class="hidden md:flex gap-4 text-sm">
+        <li><a href="#model" class="hover:underline">Model</a></li>
+        <li><a href="#rels" class="hover:underline">Relații</a></li>
+        <li><a href="#er" class="hover:underline">ER Diagram</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-6xl px-4 py-10">
+    <!-- Hero -->
+    <section class="relative overflow-hidden rounded-3xl border bg-gradient-to-br from-white to-zinc-50 p-8 md:p-12 shadow-sm mb-10">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold">MediCareHub</h1>
+        <p class="mt-3 text-zinc-600 text-lg">
+          Gestionarea unui spital – model conceptual al bazei de date
+        </p>
+      </div>
+    </section>
+
+  
+
+    <!-- Model conceptual -->
+    <section id="model" class="py-8">
+      <h2 class="text-3xl font-bold mb-3">Model conceptual și entități</h2>
+      <div class="overflow-x-auto border rounded-xl">
+        <table class="w-full text-sm">
+          <thead class="bg-zinc-100">
+            <tr>
+              <th class="p-3 text-left">Entitate</th>
+              <th class="p-3 text-left">Descriere</th>
+              <th class="p-3 text-left">Atribute principale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white">
+              <td class="p-3 font-semibold">Pacient</td>
+              <td class="p-3">Persoane tratate sau internate în spital</td>
+              <td class="p-3">id_pacient, nume, prenume, cnp, data_nasterii, adresa, telefon</td>
+            </tr>
+            <tr class="bg-zinc-50">
+              <td class="p-3 font-semibold">Doctor</td>
+              <td class="p-3">Medici angajați ai spitalului</td>
+              <td class="p-3">id_doctor, nume, prenume, specializare, telefon, email</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="p-3 font-semibold">Salon</td>
+              <td class="p-3">Camere din spital pentru cazarea pacienților</td>
+              <td class="p-3">id_salon, numar_salon, capacitate, tip_salon, disponibilitate</td>
+            </tr>
+            <tr class="bg-zinc-50">
+              <td class="p-3 font-semibold">Internare</td>
+              <td class="p-3">Înregistrarea pacientului în spital</td>
+              <td class="p-3">id_internare, id_pacient (FK), id_doctor (FK), id_salon (FK), data_internare, diagnostic, status</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="p-3 font-semibold">Tratament</td>
+              <td class="p-3">Tratament prescris pentru o internare</td>
+              <td class="p-3">id_tratament, id_internare (FK), denumire, doza, frecventa, durata</td>
+            </tr>
+            <tr class="bg-zinc-50">
+              <td class="p-3 font-semibold">Serviciu_Medical</td>
+              <td class="p-3">Servicii medicale (analize, investigații, intervenții)</td>
+              <td class="p-3">id_serviciu, denumire, pret</td>
+            </tr>
+            <tr class="bg-white">
+              <td class="p-3 font-semibold">Factura</td>
+              <td class="p-3">Document financiar pentru o internare</td>
+              <td class="p-3">id_factura, id_internare (FK), data_emitere, total, metoda_plata</td>
+            </tr>
+            <tr class="bg-zinc-50">
+              <td class="p-3 font-semibold">Internare_Serviciu</td>
+              <td class="p-3">Legătură M:N între internare și servicii</td>
+              <td class="p-3">id_internare (FK), id_serviciu (FK), cantitate, cost_unitar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Relații -->
+    <section id="rels" class="py-8">
+      <h2 class="text-3xl font-bold mb-3">Relațiile dintre entități</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border rounded-xl p-4 bg-white shadow-sm">
+          <h4 class="font-semibold mb-1">Pacient – Internare (1 la N)</h4>
+          <p>Un pacient poate avea mai multe internări. Fiecare internare aparține unui singur pacient.</p>
+        </div>
+        <div class="border rounded-xl p-4 bg-white shadow-sm">
+          <h4 class="font-semibold mb-1">Doctor – Internare (1 la N)</h4>
+          <p>Un doctor poate supraveghea mai multe internări. Fiecare internare are un singur doctor principal.</p>
+        </div>
+        <div class="border rounded-xl p-4 bg-white shadow-sm">
+          <h4 class="font-semibold mb-1">Salon – Internare (1 la N)</h4>
+          <p>Un salon poate găzdui mai multe internări, dar fiecare internare e asociată unui singur salon.</p>
+        </div>
+        <div class="border rounded-xl p-4 bg-white shadow-sm">
+          <h4 class="font-semibold mb-1">Internare – Tratament (1 la N)</h4>
+          <p>O internare poate include mai multe tratamente; fiecare tratament aparține unei internări.</p>
+        </div>
+        <div class="border rounded-xl p-4 bg-white shadow-sm">
+          <h4 class="font-semibold mb-1">Internare – Serviciu_Medical (M la N)</h4>
+          <p>O internare poate include mai multe servicii; un serviciu poate apărea în mai multe internări.</p>
+        </div>
+        <div class="border rounded-xl p-4 bg-white shadow-sm">
+          <h4 class="font-semibold mb-1">Internare – Factură (1 la 1)</h4>
+          <p>Fiecare internare finalizată generează o singură factură.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diagramă ER -->
+    <section id="er" class="py-8">
+      <h2 class="text-3xl font-bold mb-3">Diagramă ER</h2>
+      <img src="diagrama.jpg" width="70%" alt="ER diagram MediCareHub" class="rounded-xl border shadow-md mx-auto">
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-8 text-center text-xs text-zinc-500">
+      © 2025 MediCareHub — model conceptual.
+    </footer>
+  </main>
+</body>
+</html>

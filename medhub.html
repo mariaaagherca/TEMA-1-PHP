@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCareHub – Prezentare generală</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Bara de navigare -->
+  <nav>
+    <div class="container">
+      <a href="medhub.html" class="logo">MediCareHub</a>
+      <ul>
+        <li><a href="#scop">Scop</a></li>
+        <li><a href="#descriere">Descriere</a></li>
+        <li><a href="#diagrame">Diagrame UML</a></li>
+        <li><a href="main.html" class="highlight">Model conceptual</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Secțiunea principală -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Bun venit la <span>MediCareHub</span></h1>
+      <p>Platforma inteligentă de gestionare a activităților unui spital modern</p>
+    </div>
+  </header>
+
+  <!-- Scopul aplicației -->
+  <section id="scop" class="content-section">
+    <h2>Scopul general al aplicației</h2>
+    <p>
+      Aplicația web <strong>MediCareHub</strong> are ca scop facilitarea gestionării activităților unui spital modern – de la evidența pacienților și internărilor, până la facturare, servicii medicale și administrarea personalului medical.
+    </p>
+    <p>
+      Aceasta simplifică procesele spitalului prin automatizarea operațiunilor și centralizarea informațiilor într-o bază de date comună. Este dezvoltată în <strong>PHP și MySQL</strong> și oferă o interfață prietenoasă, ușor de utilizat, care permite atât gestionarea internă a spitalului, cât și urmărirea activității medicale.
+    </p>
+  </section>
+
+  <!-- Descriere generală -->
+  <section id="descriere" class="content-section">
+    <h2>Descriere generală a aplicației</h2>
+    <p>
+      Sistemul este organizat pe mai multe niveluri de acces, corespunzătoare categoriilor de utilizatori:
+    </p>
+    <ul>
+      <li><strong>Administratorul spitalului</strong> – gestionează saloanele, personalul medical, tarifele și conturile de utilizatori.</li>
+      <li><strong>Doctorul</strong> – gestionează fișele pacienților, internările și tratamentele prescrise.</li>
+      <li><strong>Asistentul medical</strong> – monitorizează pacienții internați și actualizează starea acestora.</li>
+      <li><strong>Pacientul</strong> – poate vizualiza informațiile proprii, istoricul tratamentelor și factura finală.</li>
+    </ul>
+    <p>
+      Aplicația oferă o interfață publică (pentru pacienți) și una administrativă, accesibilă doar prin autentificare.
+      Drepturile de acces sunt definite în funcție de rolul utilizatorului.
+    </p>
+  </section>
+
+  <!-- Diagrame UML -->
+  <section id="diagrame" class="content-section center">
+    <h2>Diagrame UML de secvență</h2>
+    <p>Diagramele de mai jos ilustrează principalele interacțiuni dintre utilizatorii aplicației și backend:</p>
+
+    <div class="uml-container">
+      <h3>Administrator</h3>
+      <img src="administrator.png" alt="Diagrama UML Administrator" class="uml-diagram">
+
+      <h3>Doctor</h3>
+      <img src="doctor.png" alt="Diagrama UML Doctor" class="uml-diagram">
+
+      <h3>Pacient</h3>
+      <img src="pacient.png" alt="Diagrama UML Pacient" class="uml-diagram">
+    </div>
+  </section>
+
+  <!-- Buton spre modelul conceptual -->
+  <section class="content-section center">
+    <a href="main.html" class="main-btn">👉 Vezi modelul conceptual și relațiile</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 MediCareHub – platformă de management spitalicesc
+  </footer>
+
+</body>
+</html>
