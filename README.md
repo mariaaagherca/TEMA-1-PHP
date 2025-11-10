@@ -79,8 +79,5 @@ Aceste diagrame sunt disponibile în pagina `medhub.html`, în secțiunea „Dia
 - **PHP & MySQL** – (menționate ca backend teoretic) pentru stocarea și gestionarea datelor  
 - **PlantUML** – pentru generarea diagramelor UML de secvență
 
----
-
-## 💾 Structura proiectului
 
 
